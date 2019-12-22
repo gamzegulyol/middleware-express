@@ -2,13 +2,19 @@ const express = require('express');
 const router = express.Router();
 const fetch = require('node-fetch');
 
-router.get('/',(req,res,next)=>{
-    fetch('http://localhost:5000/api/userList')
-    .then(res=>res.JSON())
-    .then(data=> {
+router.get('/', async (req, res, next) => {
+    try {
+        const response = await fetch('http://localhost:5000/api/userList');
+        const data = await response.json();
+        res.render('index', {
+            userList: data,
+            title: "Kullanıcı Bilgileri"
+        });
+
         res.send(data);
-    })
-    .catch(err=>res.send("Oopss"));
+    } catch (error) {
+        res.send("Oopss");
+    }
 });
 
 module.exports = router;
