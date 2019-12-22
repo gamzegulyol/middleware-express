@@ -4,8 +4,11 @@
   "description": "an express middleware",
   "main": "app.js",
   "scripts": {
+    "debug": "/usr/local/bin/node --inspect-brk",
     "start": "node app.js",
-    "debug": "node --inspect-brk"
+    "test": "jest --no-cache --verbose",
+    "test:coverage": "jest --no-cache --verbose --coverage",
+    "test:debug": "npm run debug node_modules/jest/bin/jest.js -- --runInBand"
   },
   "author": "\"\"",
   "license": "MIT",
@@ -15,6 +18,7 @@
     "node-fetch": "^2.6.0"
   },
   "devDependencies": {
+    "jest": "^24.9.0",
     "prettier": "^1.19.1"
   }
 }
