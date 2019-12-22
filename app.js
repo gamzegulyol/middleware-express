@@ -4,8 +4,10 @@ const http = require('http');
 const path = require('path');
 
 const indexRouter = require('./routes/index');
+const userDetailRouter = require('./routes/userDetails');
 
 app.use('/', indexRouter);
+app.use("/", userDetailRouter);
 app.set("views", path.join(__dirname, "views"));
 app.set('view engine', 'ejs');
 
